@@ -474,14 +474,23 @@ types:
       type_name:
         value: _root.type_ids[class_idx].type_name
         -webide-parse-mode: eager
+      super_name:
+        value: _root.type_ids[superclass_idx].type_name
       class_data:
         pos: class_data_off
         type: class_data_item
         if: class_data_off != 0
+      source_file:
+        value: _root.string_ids[source_file_idx].value.data
+        if: source_file_idx != 0xffffffff
       static_values:
         pos: static_values_off
         type: encoded_array_item
         if: static_values_off != 0
+      interfaces:
+        pos: interfaces_off
+        type: type_list
+        if: interfaces_off != 0
   encoded_array_item:
     seq:
       - id: value
